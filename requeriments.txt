@@ -1,2 +1,10 @@
+matplotlib
+mlxtend
+nltk
+numpy
 pandas
-scikit-learn
+Pillow
+plotly
+scikit_learn
+streamlit
+wordcloud
