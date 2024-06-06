@@ -64,6 +64,7 @@ else:
 
 import streamlit as st
 import pandas as pd
+import io
 
 # Título de la aplicación
 st.title("Cargar y visualizar archivo Python")
@@ -81,7 +82,10 @@ if uploaded_file is not None:
     st.code(content, language='python')
     
     # Ejecutar el archivo Python
-    exec(content)
+    try:
+        exec(content)
+    except Exception as e:
+        st.error(f"Error al ejecutar el archivo: {e}")
     
     # Suponiendo que el archivo define un DataFrame `df`
     if 'df' in locals() or 'df' in globals():
@@ -96,18 +100,4 @@ if uploaded_file is not None:
             st.write("df.shape:")
             st.write(df.shape)
 
-        if st.button('Mostrar df.info()'):
-            st.write("df.info():")
-            buffer = io.StringIO()
-            df.info(buf=buffer)
-            s = buffer.getvalue()
-            st.text(s)
-
-        if st.button('Mostrar df.describe()'):
-            st.write("df.describe():")
-            st.write(df.describe())
-    else:
-        st.write("El archivo Python no define un DataFrame llamado `df`.")
-else:
-    st.write("Por favor, cargue un archivo Python para continuar.")
-
+        if st.button('Mostrar 
