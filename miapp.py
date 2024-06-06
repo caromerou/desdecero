@@ -100,4 +100,18 @@ if uploaded_file is not None:
             st.write("df.shape:")
             st.write(df.shape)
 
-        if st.button('Mostrar')
+        if st.button('Mostrar df.info()'):
+            st.write("df.info():")
+            buffer = io.StringIO()
+            df.info(buf=buffer)
+            s = buffer.getvalue()
+            st.text(s)
+
+        if st.button('Mostrar df.describe()'):
+            st.write("df.describe():")
+            st.write(df.describe())
+    else:
+        st.write("El archivo Python no define un DataFrame llamado `df`.")
+else:
+    st.write("Por favor, cargue un archivo Python para continuar.")
+
