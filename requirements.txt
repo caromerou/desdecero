@@ -8,3 +8,4 @@ plotly
 scikit_learn
 streamlit
 wordcloud
+gdown
