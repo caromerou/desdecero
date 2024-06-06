@@ -1,0 +1,10 @@
+matplotlib
+mlxtend
+nltk
+numpy
+pandas
+Pillow
+plotly
+scikit_learn
+streamlit
+wordcloud
