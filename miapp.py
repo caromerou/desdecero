@@ -83,13 +83,14 @@ if uploaded_file is not None:
     
     # Ejecutar el archivo Python
     try:
-        exec(content)
+        exec_globals = {}
+        exec(content, exec_globals)
     except Exception as e:
         st.error(f"Error al ejecutar el archivo: {e}")
     
     # Suponiendo que el archivo define un DataFrame `df`
-    if 'df' in locals() or 'df' in globals():
-        df = eval('df')  # Obtener el DataFrame `df`
+    if 'df' in exec_globals:
+        df = exec_globals['df']  # Obtener el DataFrame `df`
         
         # Botones para mostrar las diferentes instrucciones
         if st.button('Mostrar df.head(10)'):
