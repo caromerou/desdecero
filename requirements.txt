@@ -9,3 +9,4 @@ scikit_learn
 streamlit
 wordcloud
 requests
+seaborn
