@@ -39,9 +39,10 @@ if uploaded_py_file is not None:
                 with open("requirements.txt", "w") as f:
                     f.write(content_txt)
                 
-                # Ejecutar el archivo Python cargado
+                # Instalar las dependencias del archivo requirements.txt
                 result = subprocess.run(["python", "-m", "pip", "install", "-r", "requirements.txt"], capture_output=True, text=True)
                 if result.returncode == 0:
+                    # Ejecutar el archivo Python cargado
                     exec(content_py)
                 else:
                     st.error(f"Error al instalar las dependencias del archivo Python: {result.stderr}")
@@ -49,3 +50,4 @@ if uploaded_py_file is not None:
                 st.error(f"Error al ejecutar el archivo Python: {e}")
 else:
     st.write("Por favor, cargue un archivo Python para continuar.")
+
